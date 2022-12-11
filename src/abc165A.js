@@ -6,7 +6,10 @@ function Main (input) {
   const N = parseInt(input[0], 10);
   const [A, B] = input[1].split(' ').map(x => parseInt(x, 10));
 
-  if ((B - A + 1) / N >= 1) {
+  // 倍数のリストを作る
+  const baisu = [...Array(1000)].map((_, i) => i + 1);
+  const filteredList = baisu.filter((elem) => elem % N === 0);
+  if (filteredList.some((elem) => A <= elem && elem <= B)) {
     console.log('OK');
   } else {
     console.log('NG');
